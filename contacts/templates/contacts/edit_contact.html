@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Contact</title>
+
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>✏️ Edit Contact</h1>
+        <p>Update your contact information</p>
+    </div>
+
+
+    <div class="section">
+
+        <h2>✏️ Edit {{ contact.name }}</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+                💾 Update Contact
+            </button>
+
+        </form>
+
+        <a
+            href="{% url 'contact_list' %}"
+            class="clear-btn back-link"
+        >
+            ← Back to Contacts
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html> 

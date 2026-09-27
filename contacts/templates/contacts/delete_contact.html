@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Delete Contact</title>
+
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🗑️ Delete Contact</h1>
+        <p>Contact Manager</p>
+    </div>
+
+
+    <div class="section delete-warning">
+
+        <h2>⚠️ Are you sure?</h2>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ contact.name }}</strong>?
+        </p>
+
+
+        <div class="delete-info">
+
+            <p>
+                📞 <strong>Phone:</strong>
+                {{ contact.phone }}
+            </p>
+
+            <p>
+                📧 <strong>Email:</strong>
+                {{ contact.email }}
+            </p>
+
+            <p>
+                📍 <strong>Address:</strong>
+                {{ contact.address }}
+            </p>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="delete-btn"
+            >
+                🗑️ Yes, Delete
+            </button>
+
+        </form>
+
+
+        <a
+            href="{% url 'contact_list' %}"
+            class="clear-btn back-link"
+        >
+            ← Cancel
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
